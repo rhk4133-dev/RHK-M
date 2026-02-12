@@ -7,11 +7,11 @@
 </head>
 <body>
 
-<!-- HERO PAGE -->
+<!-- HOME -->
 <div id="homePage" class="home">
     <div class="hero-card">
         <h1>🎵 RHK MUSIC</h1>
-        <p>Feel The Premium Sound Experience</p>
+        <p>Feel The Premium Sound</p>
         <button onclick="enterApp()">ENTER MUSIC</button>
     </div>
 </div>
@@ -21,17 +21,15 @@
 
     <div class="top-bar">
         <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
-        <button id="themeToggle">🌙</button>
     </div>
 
-    <!-- NOW PLAYING -->
-    <div class="now-playing">
-        <img id="nowImg" src="">
-        <div>
-            <h2 id="nowTitle">No song selected</h2>
-            <div class="visualizer">
-                <span></span><span></span><span></span><span></span>
-            </div>
+    <!-- PLAYER VIEW -->
+    <div id="playerView" class="player-view hidden">
+        <div class="overlay"></div>
+        <div class="center-player">
+            <div class="cd" id="cd"></div>
+            <h2 id="nowTitle"></h2>
+            <button onclick="goBack()" class="back-btn">⬅ Back</button>
         </div>
     </div>
 
