@@ -42,15 +42,16 @@
             <div class="cd" id="cd"></div>
             <h2 id="nowTitle"></h2>
 
-            <p class="gesture-info">Double tap ➡ +10s | ⬅ -10s</p>
-
-            <div class="controls">
-                <button onclick="prevSong()" class="control-btn">⏮</button>
-                <button onclick="togglePlay()" id="playBtn" class="control-btn">⏸</button>
-                <button onclick="nextSong()" class="control-btn">⏭</button>
+            <div class="player-controls">
+                <button onclick="prevSong()">⏮</button>
+                <button onclick="minus10()">⏪ 10s</button>
+                <button onclick="togglePlay()" id="playBtn">⏸</button>
+                <button onclick="plus10()">10s ⏩</button>
+                <button onclick="nextSong()">⏭</button>
             </div>
 
             <p class="brand-watermark">RHK MUSIC</p>
+            <button onclick="goBack()" class="back-btn">⬅ Back</button>
         </div>
     </div>
 
