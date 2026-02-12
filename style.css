@@ -201,3 +201,83 @@ background:linear-gradient(45deg,#ff512f,#dd2476);
 color:white;
 cursor:pointer;
 }
+/* ============================= */
+/* 🔥 ULTRA DJ ENERGY SYSTEM 🔥 */
+/* ============================= */
+
+.cd-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: auto;
+}
+
+/* OUTER RING */
+.energy-ring {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: conic-gradient(
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+    filter: blur(15px);
+    animation: rotateRing 6s linear infinite;
+    opacity: 0.8;
+}
+
+/* INNER RING */
+.energy-ring::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #ff512f,
+        #dd2476,
+        #00f2ff,
+        #ff512f
+    );
+    filter: blur(10px);
+    animation: rotateReverse 4s linear infinite;
+}
+
+/* Rotations */
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+/* Pulse Effect */
+.cd.playing {
+    animation: spin 4s linear infinite, pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 20px #ff512f; }
+    50% { box-shadow: 0 0 60px #dd2476; }
+    100% { box-shadow: 0 0 20px #ff512f; }
+}
+
+/* When paused */
+.energy-ring.paused {
+    animation: none;
+    opacity: 0.2;
+}
