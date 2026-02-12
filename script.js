@@ -1,165 +1,98 @@
-/* CUSTOM SONG NAMES */
-const songNames = [
-"ದಿಲ್ ಲಗಾನಾ",
-"ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ",
-"ಕನವೇ ಕನವೇ",
-"ಕಾಂತಾರ",
-"ಜರಾ ಜರಾ",
-"ಒರುಮ್ ಬ್ಲಡ್",
-"NIGHT VIBES",
-"EMOTIONAL TRACK",
-"PARTY SONG",
-"SAD VERSION",
-"ROMANTIC TUNE",
-"DANCE MIX",
-"SOFT MELODY",
-"RETRO HIT",
-"CLASSIC VIBES",
-"HEART TOUCH",
-"SLOW JAM",
-"ENERGY BLAST",
-"RAIN SONG",
-"CHILL MODE",
-"MOOD OFF",
-"FEEL GOOD",
-"LOFI TRACK",
-"REMIX BEAT",
-"INSTRUMENTAL",
-"DJ MIX",
-"FOLK SONG",
-"ROCK STYLE",
-"POP HIT",
-"EDM DROP",
-"TRAVEL VIBES",
-"FRIENDSHIP SONG",
-"BREAKUP SONG",
-"MOTIVATION TRACK",
-"COLLEGE DAYS",
-"MASS ENTRY",
-"INTRO MUSIC",
-"OUTRO MUSIC",
-"THEME SONG",
-"MELODY KING",
-"SUNSET TRACK",
-"SUNRISE BEAT",
-"PARTY NIGHT",
-"SILENT LOVE",
-"HEART BREAK",
-"RAINY MOOD",
-"ROAD TRIP",
-"GUITAR SOLO",
-"PIANO VERSION",
-"FINAL TRACK"
-];
-
-/* AUTO GENERATE 50 SONGS WITH CUSTOM NAMES */
-const songs = [];
-
-for (let i = 1; i <= 50; i++) {
-    songs.push({
-        name: songNames[i - 1] || "Song " + i,
-        file: "song" + i + ".mp3",
-        img: "img" + i + ".jpg"
-    });
+body{
+    margin:0;
+    font-family:Arial;
+    background:#111;
+    color:white;
 }
 
-/* AUTO GENERATE 50 SONGS WITH CUSTOM NAMES */
-const songs = [];
-
-for (let i = 1; i <= 50; i++) {
-    songs.push({
-        name: songNames[i - 1],
-        file: "song" + i + ".mp3",
-        img: "img" + i + ".jpg"
-    });
+.home{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-const audio = document.getElementById("audio");
-const songGrid = document.getElementById("songGrid");
-const playerView = document.getElementById("playerView");
-const cd = document.getElementById("cd");
-const nowTitle = document.getElementById("nowTitle");
-
-let currentIndex = 0;
-
-function enterApp(){
-    document.getElementById("homePage").style.display="none";
-    document.getElementById("musicApp").style.display="block";
+.hero-card{
+    text-align:center;
 }
 
-songs.forEach((song,index)=>{
-    const card=document.createElement("div");
-    card.className="song-card";
-    card.innerHTML=`
-        <img src="${song.img}">
-        <h3>${song.name}</h3>
-    `;
-    card.onclick=()=>playSong(index);
-    songGrid.appendChild(card);
-});
-
-function playSong(index){
-    currentIndex=index;
-    const song=songs[index];
-
-    audio.src=song.file;
-    audio.play();
-
-    nowTitle.innerText=song.name;
-
-    playerView.style.backgroundImage=`url('${song.img}')`;
-    playerView.style.display="flex";
-
-    cd.style.backgroundImage=`url('${song.img}')`;
-    cd.classList.add("playing");
-
-    document.getElementById("playBtn").innerText="⏸";
+.hero-card button{
+    padding:10px 20px;
+    font-size:18px;
+    border:none;
+    background:#ff9800;
+    color:white;
+    border-radius:10px;
 }
 
-function togglePlay(){
-    if(audio.paused){
-        audio.play();
-        cd.classList.add("playing");
-        document.getElementById("playBtn").innerText="⏸";
-    }else{
-        audio.pause();
-        cd.classList.remove("playing");
-        document.getElementById("playBtn").innerText="▶";
-    }
+#searchBar{
+    width:90%;
+    margin:15px;
+    padding:10px;
+    font-size:16px;
+    border-radius:10px;
+    border:none;
 }
 
-function nextSong(){
-    currentIndex++;
-    if(currentIndex>=songs.length) currentIndex=0;
-    playSong(currentIndex);
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+    gap:15px;
+    padding:15px;
 }
 
-function prevSong(){
-    currentIndex--;
-    if(currentIndex<0) currentIndex=songs.length-1;
-    playSong(currentIndex);
+.song-card{
+    background:#222;
+    padding:10px;
+    border-radius:15px;
+    text-align:center;
+    cursor:pointer;
 }
 
-function plus10(){
-    audio.currentTime+=10;
+.song-card img{
+    width:100%;
+    border-radius:10px;
 }
 
-function minus10(){
-    audio.currentTime-=10;
+.player{
+    position:fixed;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    backdrop-filter:blur(20px);
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
-function goBack(){
-    playerView.style.display="none";
-    audio.pause();
-    cd.classList.remove("playing");
+.cd{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    background-size:cover;
+    background-position:center;
+    animation:spin 5s linear infinite;
+    animation-play-state:paused;
 }
 
-function searchSong(){
-    let input=document.getElementById("searchBar").value.toLowerCase();
-    document.querySelectorAll(".song-card").forEach(card=>{
-        card.style.display=card.innerText.toLowerCase().includes(input)?"block":"none";
-    });
+.cd.playing{
+    animation-play-state:running;
 }
 
-/* Auto play next when song ends */
-audio.addEventListener("ended",nextSong);
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+.controls button,
+.skip button,
+.backBtn{
+    margin:10px;
+    padding:10px 15px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#ff9800;
+    color:white;
+}
