@@ -5,7 +5,7 @@ const songNames = [
 "ಕನವೇ ಕನವೇ",
 "ಕಾಂತಾರ",
 "ಜರಾ ಜರಾ",
-""ಒರುಮ್ ಬ್ಲಡ್",
+"ಒರುಮ್ ಬ್ಲಡ್",
 "NIGHT VIBES",
 "EMOTIONAL TRACK",
 "PARTY SONG",
@@ -51,6 +51,17 @@ const songNames = [
 "PIANO VERSION",
 "FINAL TRACK"
 ];
+
+/* AUTO GENERATE 50 SONGS WITH CUSTOM NAMES */
+const songs = [];
+
+for (let i = 1; i <= 50; i++) {
+    songs.push({
+        name: songNames[i - 1] || "Song " + i,
+        file: "song" + i + ".mp3",
+        img: "img" + i + ".jpg"
+    });
+}
 
 /* AUTO GENERATE 50 SONGS WITH CUSTOM NAMES */
 const songs = [];
