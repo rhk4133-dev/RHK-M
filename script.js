@@ -1,11 +1,11 @@
 /* CUSTOM SONG NAMES */
 const songNames = [
-"KAGADADA DONIYALLI",
-"KANAVE KANAVE",
-"TAMIL MELODY",
-"DIL LAGANA",
-"ZARA ZARA",
-"LOVE BEATS",
+"ದಿಲ್ ಲಗಾನಾ",
+"ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ",
+"ಕನವೇ ಕನವೇ",
+"ಕಾಂತಾರ",
+"ಜರಾ ಜರಾ",
+""ಒರುಮ್ ಬ್ಲಡ್",
 "NIGHT VIBES",
 "EMOTIONAL TRACK",
 "PARTY SONG",
