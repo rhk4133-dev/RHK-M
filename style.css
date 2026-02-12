@@ -9,7 +9,7 @@ body{
 height:100vh;
 background:linear-gradient(-45deg,#141E30,#243B55,#000,#1f1c2c);
 background-size:400% 400%;
-animation:gradient 10s ease infinite;
+animation:gradient 12s ease infinite;
 color:white;
 overflow-x:hidden;
 }
@@ -29,46 +29,81 @@ align-items:center;
 }
 
 .hero-card{
-background:rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.08);
 padding:40px;
 border-radius:20px;
-backdrop-filter:blur(15px);
+backdrop-filter:blur(20px);
 text-align:center;
+box-shadow:0 0 40px rgba(255,0,0,0.4);
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 }
 
 .hero-card h1{
 font-size:45px;
+margin-bottom:10px;
 }
 
-.hero-card button{
-margin-top:20px;
+.category-buttons{
+margin:20px 0;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.category-buttons button{
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(45deg,#ff416c,#ff4b2b);
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.category-buttons button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px red;
+}
+
+.enter-btn{
+margin-top:15px;
 padding:12px 25px;
 border:none;
 border-radius:30px;
-background:linear-gradient(45deg,red,orange);
+background:linear-gradient(45deg,cyan,blue);
 color:white;
 cursor:pointer;
 }
 
 /* APP */
-.hidden{
-display:none;
-}
-
 .app{
 padding:20px;
+}
+
+#searchBar{
+width:100%;
+padding:12px;
+border-radius:20px;
+border:none;
+margin-bottom:20px;
 }
 
 /* SONG GRID */
 .song-grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
 gap:20px;
 }
 
 .song-card{
 background:rgba(255,255,255,0.1);
-padding:10px;
+padding:12px;
 border-radius:15px;
 cursor:pointer;
 transition:0.3s;
@@ -77,7 +112,7 @@ text-align:center;
 
 .song-card:hover{
 transform:scale(1.05);
-background:linear-gradient(45deg,red,orange);
+background:linear-gradient(45deg,#ff416c,#ff4b2b);
 }
 
 .song-card img{
@@ -86,7 +121,7 @@ border-radius:10px;
 margin-bottom:10px;
 }
 
-/* PLAYER FULL VIEW */
+/* PLAYER */
 .player-view{
 position:fixed;
 top:0;
@@ -95,7 +130,7 @@ width:100%;
 height:100%;
 background-size:cover;
 background-position:center;
-display:flex;
+display:none;
 justify-content:center;
 align-items:center;
 }
@@ -105,7 +140,7 @@ position:absolute;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(8px);
 }
 
 .center-player{
@@ -114,10 +149,9 @@ z-index:2;
 text-align:center;
 }
 
-/* CD */
 .cd{
-width:250px;
-height:250px;
+width:260px;
+height:260px;
 border-radius:50%;
 background-size:cover;
 background-position:center;
@@ -144,6 +178,29 @@ animation:spin 4s linear infinite;
 @keyframes spin{
 from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
+}
+
+.controls{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:25px;
+}
+
+.controls button{
+padding:12px 18px;
+border:none;
+border-radius:50%;
+background:linear-gradient(45deg,orange,red);
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.controls button:hover{
+transform:scale(1.2);
+box-shadow:0 0 20px orange;
 }
 
 .back-btn{
