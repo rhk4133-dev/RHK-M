@@ -11,7 +11,7 @@
 <div id="homePage" class="home">
     <div class="hero-card">
         <h1>🎵 RHK MUSIC</h1>
-        <p>Feel The Premium Sound</p>
+        <p>Feel The Premium Neon Sound</p>
         <button onclick="enterApp()">ENTER MUSIC</button>
     </div>
 </div>
@@ -19,16 +19,24 @@
 <!-- MUSIC APP -->
 <div id="musicApp" class="app" style="display:none;">
 
-    <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
+    <!-- SEARCH BAR -->
+    <input 
+        type="text" 
+        id="searchBar" 
+        placeholder="🔍 Search song..." 
+        onkeyup="searchSong()"
+    >
 
     <!-- SONG GRID -->
     <div class="song-grid" id="songGrid"></div>
 
     <!-- FULL PLAYER VIEW -->
     <div id="playerView" class="player-view" style="display:none;">
+        
         <div class="overlay"></div>
 
         <div class="center-player">
+
             <!-- VISUALIZER -->
             <div class="visualizer">
                 <span></span>
@@ -40,10 +48,14 @@
 
             <h2 id="nowTitle"></h2>
 
-            <button onclick="goBack()" class="back-btn">⬅ Back</button>
+            <button onclick="goBack()" class="back-btn">
+                ⬅ Back
+            </button>
+
         </div>
     </div>
 
+    <!-- AUDIO -->
     <audio id="audio"></audio>
 
 </div>
