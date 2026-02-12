@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>My Premium Music App</title>
+    <title>RHK Music Premium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1 class="title">🎵 My Premium Music Player</h1>
-
-    <div class="music-container">
-
-        <!-- Player Card -->
-        <div class="player">
-
-            <div class="cd-container">
-                <div class="cd" id="cd"></div>
-            </div>
-
-            <h2 id="song-title">Song 1</h2>
-
-            <audio id="audio"></audio>
-
-            <div class="controls">
-                <button onclick="prevSong()">⏮</button>
-                <button onclick="playPause()">▶</button>
-                <button onclick="nextSong()">⏭</button>
-            </div>
-
-        </div>
-
-        <!-- Song List -->
-        <div class="song-list">
-            <div class="song" onclick="selectSong(0)">Song 1</div>
-            <div class="song" onclick="selectSong(1)">Song 2</div>
-            <div class="song" onclick="selectSong(2)">Song 3</div>
-            <div class="song" onclick="selectSong(3)">Song 4</div>
-            <div class="song" onclick="selectSong(4)">Song 5</div>
-        </div>
-
+<!-- HERO PAGE -->
+<div id="homePage" class="home">
+    <div class="hero-card">
+        <h1>🎵 RHK MUSIC</h1>
+        <p>Feel The Premium Sound Experience</p>
+        <button onclick="enterApp()">ENTER MUSIC</button>
     </div>
+</div>
+
+<!-- MUSIC APP -->
+<div id="musicApp" class="app hidden">
+
+    <div class="top-bar">
+        <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
+        <button id="themeToggle">🌙</button>
+    </div>
+
+    <!-- NOW PLAYING -->
+    <div class="now-playing">
+        <img id="nowImg" src="">
+        <div>
+            <h2 id="nowTitle">No song selected</h2>
+            <div class="visualizer">
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SONG GRID -->
+    <div class="song-grid" id="songGrid"></div>
+
+    <audio id="audio"></audio>
+
+</div>
 
 <script src="script.js"></script>
 </body>
