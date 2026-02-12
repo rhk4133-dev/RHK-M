@@ -1,33 +1,30 @@
-/* CUSTOM SONG NAMES */
-const songNames = [
-"ದಿಲ್ ಲಗಾನಾ","ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ","ಕನವೇ ಕನವೇ","ಕಾಂತಾರ","ಜರಾ ಜರಾ",
-"ಒರುಮ್ ಬ್ಲಡ್","NIGHT VIBES","EMOTIONAL TRACK","PARTY SONG","SAD VERSION",
-"ROMANTIC TUNE","DANCE MIX","SOFT MELODY","RETRO HIT","CLASSIC VIBES",
-"HEART TOUCH","SLOW JAM","ENERGY BLAST","RAIN SONG","CHILL MODE",
-"MOOD OFF","FEEL GOOD","LOFI TRACK","REMIX BEAT","INSTRUMENTAL",
-"DJ MIX","FOLK SONG","ROCK STYLE","POP HIT","EDM DROP",
-"TRAVEL VIBES","FRIENDSHIP SONG","BREAKUP SONG","MOTIVATION TRACK","COLLEGE DAYS",
-"MASS ENTRY","INTRO MUSIC","OUTRO MUSIC","THEME SONG","MELODY KING",
-"SUNSET TRACK","SUNRISE BEAT","PARTY NIGHT","SILENT LOVE","HEART BREAK",
-"RAINY MOOD","ROAD TRIP","GUITAR SOLO","PIANO VERSION","FINAL TRACK"
-];
-
-/* AUTO GENERATE 50 SONGS */
 const songs = [];
 
 for (let i = 1; i <= 50; i++) {
     songs.push({
-        name: songNames[i - 1] || "Song " + i,
+        name: "RHK SONG " + i,
         file: "song" + i + ".mp3",
         img: "img" + i + ".jpg"
     });
 }
+
+/* Kannada Names */
+songs[0].name = "ದಿಲ್ ಲಗಾನಾ ಮನತಾ";
+songs[1].name = "ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ";
+songs[2].name = "ಕನವೇ ಕನವೇ";
+songs[3].name = "ಜರಾ ಜರಾ";
+songs[4].name = "ಒರುಮ್ ಬ್ಲಡ್";
+songs[5].name = "ಕಾಂತಾರ";
 
 const audio = document.getElementById("audio");
 const songGrid = document.getElementById("songGrid");
 const playerView = document.getElementById("playerView");
 const cd = document.getElementById("cd");
 const nowTitle = document.getElementById("nowTitle");
+
+const prevTitle = document.getElementById("prevTitle");
+const currentTitle = document.getElementById("currentTitle");
+const nextTitle = document.getElementById("nextTitle");
 
 let currentIndex = 0;
 
@@ -47,6 +44,18 @@ songs.forEach((song,index)=>{
     songGrid.appendChild(card);
 });
 
+function updateSlideTitles(){
+    let prevIndex = currentIndex - 1;
+    let nextIndex = currentIndex + 1;
+
+    if(prevIndex < 0) prevIndex = songs.length - 1;
+    if(nextIndex >= songs.length) nextIndex = 0;
+
+    prevTitle.innerText = songs[prevIndex].name;
+    currentTitle.innerText = songs[currentIndex].name;
+    nextTitle.innerText = songs[nextIndex].name;
+}
+
 function playSong(index){
     currentIndex=index;
     const song=songs[index];
@@ -55,6 +64,7 @@ function playSong(index){
     audio.play();
 
     nowTitle.innerText=song.name;
+
     playerView.style.backgroundImage=`url('${song.img}')`;
     playerView.style.display="flex";
 
@@ -62,6 +72,8 @@ function playSong(index){
     cd.classList.add("playing");
 
     document.getElementById("playBtn").innerText="⏸";
+
+    updateSlideTitles();
 }
 
 function togglePlay(){
