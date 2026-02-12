@@ -11,15 +11,8 @@
 <div id="homePage" class="home">
     <div class="hero-card">
         <h1>🎵 RHK MUSIC</h1>
-        <p>Select Your Mood</p>
-
-        <div class="category-buttons">
-            <button onclick="selectCategory('love')">❤️ Love Songs</button>
-            <button onclick="selectCategory('horror')">👻 Horror Songs</button>
-            <button onclick="selectCategory('hiphop')">🔥 Hip Hop</button>
-        </div>
-
-        <button class="enter-btn" onclick="enterApp()">ENTER MUSIC</button>
+        <p>Feel The Premium Sound</p>
+        <button onclick="enterApp()">ENTER MUSIC</button>
     </div>
 </div>
 
@@ -28,20 +21,24 @@
 
     <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
 
+    <!-- SONG GRID -->
     <div class="song-grid" id="songGrid"></div>
 
-    <!-- FULL PLAYER -->
+    <!-- FULL PLAYER VIEW -->
     <div id="playerView" class="player-view" style="display:none;">
         <div class="overlay"></div>
 
         <div class="center-player">
-            <div class="cd" id="cd"></div>
-            <h2 id="nowTitle"></h2>
-
-            <div class="controls">
-                <button onclick="prevSong()">⏮</button>
-                <button onclick="nextSong()">⏭</button>
+            <!-- VISUALIZER -->
+            <div class="visualizer">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+
+            <h2 id="nowTitle"></h2>
 
             <button onclick="goBack()" class="back-btn">⬅ Back</button>
         </div>
