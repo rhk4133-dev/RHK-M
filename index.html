@@ -7,45 +7,59 @@
 </head>
 <body>
 
+<!-- Floating Music Notes -->
+<div class="music-bg">
+    <span>🎵</span>
+    <span>🎶</span>
+    <span>🎧</span>
+    <span>🎼</span>
+    <span>🎵</span>
+</div>
+
 <!-- HOME PAGE -->
 <div id="homePage" class="home">
     <div class="hero-card">
-        <h1>🎵 RHK Music Premium</h1>
-        <button onclick="enterApp()">Enter App</button>
+        <h1 class="logo">RHK MUSIC</h1>
+        <p class="tagline">Feel The Premium Sound Experience</p>
+        <button onclick="enterApp()" class="enter-btn">ENTER MUSIC</button>
     </div>
 </div>
 
 <!-- MUSIC APP -->
-<div id="musicApp" style="display:none;">
+<div id="musicApp" class="app" style="display:none;">
+    <h2 class="app-title">🔥 RHK MUSIC PREMIUM 🔥</h2>
+    <input type="text" id="searchBar" placeholder="Search RHK song..." onkeyup="searchSong()">
+    <div class="song-grid" id="songGrid"></div>
 
-    <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
+    <!-- PLAYER -->
+    <div id="playerView" class="player-view" style="display:none;">
+        <div class="overlay"></div>
 
-    <div id="songGrid" class="grid"></div>
+        <div class="center-player">
+            <div class="cd" id="cd"></div>
+            <h2 id="nowTitle"></h2>
 
-</div>
+            <!-- Slide Preview -->
+            <div class="slide-preview">
+                <div class="side-song" id="prevTitle"></div>
+                <div class="current-song" id="currentTitle"></div>
+                <div class="side-song" id="nextTitle"></div>
+            </div>
 
-<!-- PLAYER VIEW -->
-<div id="playerView" class="player">
+            <div class="player-controls">
+                <button onclick="prevSong()">⏮</button>
+                <button onclick="minus10()">⏪ 10s</button>
+                <button onclick="togglePlay()" id="playBtn">⏸</button>
+                <button onclick="plus10()">10s ⏩</button>
+                <button onclick="nextSong()">⏭</button>
+            </div>
 
-    <button class="backBtn" onclick="goBack()">⬅</button>
-
-    <div id="cd" class="cd"></div>
-
-    <h2 id="nowTitle">Song Name</h2>
+            <p class="brand-watermark">RHK MUSIC</p>
+            <button onclick="goBack()" class="back-btn">⬅ Back</button>
+        </div>
+    </div>
 
     <audio id="audio"></audio>
-
-    <div class="controls">
-        <button onclick="prevSong()">⏮</button>
-        <button id="playBtn" onclick="togglePlay()">▶</button>
-        <button onclick="nextSong()">⏭</button>
-    </div>
-
-    <div class="skip">
-        <button onclick="minus10()">-10s</button>
-        <button onclick="plus10()">+10s</button>
-    </div>
-
 </div>
 
 <script src="script.js"></script>
