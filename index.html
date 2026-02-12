@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Premium Music App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 class="title">🎵 My Premium Music Player</h1>
+
+    <div class="music-container">
+
+        <!-- Player Card -->
+        <div class="player">
+
+            <div class="cd-container">
+                <div class="cd" id="cd"></div>
+            </div>
+
+            <h2 id="song-title">Song 1</h2>
+
+            <audio id="audio"></audio>
+
+            <div class="controls">
+                <button onclick="prevSong()">⏮</button>
+                <button onclick="playPause()">▶</button>
+                <button onclick="nextSong()">⏭</button>
+            </div>
+
+        </div>
+
+        <!-- Song List -->
+        <div class="song-list">
+            <div class="song" onclick="selectSong(0)">Song 1</div>
+            <div class="song" onclick="selectSong(1)">Song 2</div>
+            <div class="song" onclick="selectSong(2)">Song 3</div>
+            <div class="song" onclick="selectSong(3)">Song 4</div>
+            <div class="song" onclick="selectSong(4)">Song 5</div>
+        </div>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
