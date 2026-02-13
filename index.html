@@ -34,7 +34,6 @@
     <!-- PLAYER -->
     <div id="playerView" class="player-view" style="display:none;">
         <div class="overlay"></div>
-
         <div class="center-player">
             <div class="cd" id="cd"></div>
             <h2 id="nowTitle"></h2>
@@ -59,9 +58,11 @@
         </div>
     </div>
 
-    <audio id="audio"></audio>
+    <!-- Hidden YouTube Player -->
+    <div id="youtubePlayer" style="display:none;"></div>
 </div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
 </body>
 </html>
