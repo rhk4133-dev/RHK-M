@@ -6,7 +6,6 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-height:100vh;
 background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000);
 background-size:400% 400%;
 animation:gradientMove 12s ease infinite;
@@ -20,12 +19,10 @@ overflow-x:hidden;
 100%{background-position:0% 50%;}
 }
 
-/* Neon */
 .logo,.app-title{
-text-shadow:0 0 5px #ff512f,0 0 10px #ff512f,0 0 20px #dd2476,0 0 40px #dd2476;
+text-shadow:0 0 10px #ff512f,0 0 20px #dd2476;
 }
 
-/* Floating Icons */
 .music-bg span{
 position:fixed;
 font-size:30px;
@@ -33,18 +30,11 @@ animation:float 10s linear infinite;
 opacity:0.2;
 }
 
-.music-bg span:nth-child(1){left:10%;animation-delay:0s;}
-.music-bg span:nth-child(2){left:30%;animation-delay:3s;}
-.music-bg span:nth-child(3){left:60%;animation-delay:6s;}
-.music-bg span:nth-child(4){left:80%;animation-delay:2s;}
-.music-bg span:nth-child(5){left:50%;animation-delay:4s;}
-
 @keyframes float{
 0%{top:100%;}
 100%{top:-10%;}
 }
 
-/* HOME */
 .home{
 height:100vh;
 display:flex;
@@ -58,11 +48,10 @@ padding:60px;
 border-radius:25px;
 backdrop-filter:blur(20px);
 text-align:center;
-box-shadow:0 20px 50px rgba(0,0,0,0.6);
 }
 
 .enter-btn{
-margin-top:25px;
+margin-top:20px;
 padding:15px 35px;
 border:none;
 border-radius:40px;
@@ -71,8 +60,10 @@ color:white;
 cursor:pointer;
 }
 
-/* APP */
-.app{padding:20px;}
+.app{
+display:none;
+padding:20px;
+}
 
 #searchBar{
 width:100%;
@@ -80,8 +71,6 @@ padding:14px;
 border-radius:30px;
 border:none;
 margin-bottom:25px;
-outline:none;
-font-size:16px;
 }
 
 .song-grid{
@@ -100,8 +89,8 @@ transition:0.3s;
 }
 
 .song-card:hover{
-box-shadow:0 0 10px #ff512f,0 0 20px #dd2476;
 transform:scale(1.05);
+box-shadow:0 0 15px #ff512f;
 }
 
 .song-card img{
@@ -110,15 +99,13 @@ border-radius:12px;
 margin-bottom:10px;
 }
 
-/* PLAYER */
 .player-view{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background-size:cover;
-background-position:center;
+background:black;
 display:none;
 justify-content:center;
 align-items:center;
@@ -129,7 +116,6 @@ position:absolute;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.8);
-backdrop-filter:blur(10px);
 }
 
 .center-player{
@@ -138,41 +124,46 @@ z-index:2;
 text-align:center;
 }
 
+.cd-container{
+position:relative;
+width:260px;
+height:260px;
+margin:auto;
+}
+
+.energy-ring{
+position:absolute;
+top:-20px;
+left:-20px;
+width:300px;
+height:300px;
+border-radius:50%;
+background:conic-gradient(red,orange,yellow,green,cyan,blue,violet,red);
+filter:blur(15px);
+animation:rotateRing 6s linear infinite;
+}
+
+@keyframes rotateRing{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
 .cd{
 width:260px;
 height:260px;
 border-radius:50%;
 background-size:cover;
 background-position:center;
-margin:auto;
-box-shadow:0 30px 60px rgba(0,0,0,0.8);
+box-shadow:0 0 30px #ff512f;
 }
 
-.cd.playing{animation:spin 4s linear infinite;}
+.cd.playing{
+animation:spin 4s linear infinite;
+}
 
 @keyframes spin{
 from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
-}
-
-.slide-preview{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:25px;
-margin-top:15px;
-font-weight:bold;
-}
-
-.side-song{
-opacity:0.4;
-font-size:14px;
-width:120px;
-}
-
-.current-song{
-font-size:18px;
-text-shadow:0 0 10px #ff512f,0 0 20px #dd2476;
 }
 
 .player-controls{
@@ -180,7 +171,6 @@ margin-top:20px;
 display:flex;
 justify-content:center;
 gap:15px;
-flex-wrap:wrap;
 }
 
 .player-controls button{
@@ -193,7 +183,7 @@ cursor:pointer;
 }
 
 .back-btn{
-margin-top:25px;
+margin-top:20px;
 padding:12px 25px;
 border:none;
 border-radius:25px;
@@ -201,83 +191,7 @@ background:linear-gradient(45deg,#ff512f,#dd2476);
 color:white;
 cursor:pointer;
 }
-/* ============================= */
-/* 🔥 ULTRA DJ ENERGY SYSTEM 🔥 */
-/* ============================= */
 
-.cd-container {
-    position: relative;
-    width: 260px;
-    height: 260px;
-    margin: auto;
-}
-
-/* OUTER RING */
-.energy-ring {
-    position: absolute;
-    top: -25px;
-    left: -25px;
-    width: 310px;
-    height: 310px;
-    border-radius: 50%;
-    background: conic-gradient(
-        red,
-        orange,
-        yellow,
-        lime,
-        cyan,
-        blue,
-        violet,
-        red
-    );
-    filter: blur(15px);
-    animation: rotateRing 6s linear infinite;
-    opacity: 0.8;
-}
-
-/* INNER RING */
-.energy-ring::after {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 270px;
-    height: 270px;
-    border-radius: 50%;
-    background: conic-gradient(
-        #ff512f,
-        #dd2476,
-        #00f2ff,
-        #ff512f
-    );
-    filter: blur(10px);
-    animation: rotateReverse 4s linear infinite;
-}
-
-/* Rotations */
-@keyframes rotateRing {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes rotateReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-}
-
-/* Pulse Effect */
-.cd.playing {
-    animation: spin 4s linear infinite, pulseGlow 2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 20px #ff512f; }
-    50% { box-shadow: 0 0 60px #dd2476; }
-    100% { box-shadow: 0 0 20px #ff512f; }
-}
-
-/* When paused */
-.energy-ring.paused {
-    animation: none;
-    opacity: 0.2;
+#youtubePlayer{
+display:none;
 }
