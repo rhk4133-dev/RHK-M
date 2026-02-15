@@ -1,65 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>RHK Music Premium</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gaming Video Gallery</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- Floating Icons -->
-<div class="music-bg">
-    <span>🎵</span>
-    <span>🎶</span>
-    <span>🎧</span>
-    <span>🎼</span>
-</div>
+    <header>
+        <h1>MY GAMING HUB</h1>
+        <p class="subtitle">Top Free Fire Strategies & Gameplay</p>
+    </header>
 
-<!-- HOME -->
-<div id="homePage" class="home">
-    <div class="hero-card">
-        <h1 class="logo">RHK MUSIC</h1>
-        <p>Feel The Premium Sound Experience</p>
-        <button onclick="enterApp()" class="enter-btn">ENTER MUSIC</button>
-    </div>
-</div>
-
-<!-- APP -->
-<div id="musicApp" class="app">
-    <h2 class="app-title">🔥 RHK MUSIC PREMIUM 🔥</h2>
-
-    <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
-    <div class="song-grid" id="songGrid"></div>
-
-    <!-- PLAYER -->
-    <div id="playerView" class="player-view">
-        <div class="overlay"></div>
-
-        <div class="center-player">
-            <div class="cd-container">
-                <div class="energy-ring" id="energyRing"></div>
-                <div class="cd" id="cd"></div>
+    <main class="container">
+        
+        <div class="video-card">
+            <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/WGqgOwSHq7I" allowfullscreen></iframe>
             </div>
-
-            <h2 id="nowTitle"></h2>
-
-            <div class="player-controls">
-                <button onclick="prevSong()">⏮</button>
-                <button onclick="minus10()">⏪</button>
-                <button onclick="togglePlay()" id="playBtn">⏸</button>
-                <button onclick="plus10()">⏩</button>
-                <button onclick="nextSong()">⏭</button>
+            <div class="video-info">
+                <h3>Level 1 Player Having FF Badge 🤯</h3>
             </div>
-
-            <button onclick="goBack()" class="back-btn">⬅ Back</button>
         </div>
-    </div>
 
-    <div id="youtubePlayer"></div>
-</div>
+        <div class="video-card">
+            <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/JHmHqa88gLk" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Top 6 Movement Tricks To Dominate</h3>
+            </div>
+        </div>
 
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="script.js"></script>
+        <div class="video-card">
+            <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/vmR4bA4hCB8" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Qualify In FFMIC - Final Day Strategy</h3>
+            </div>
+        </div>
 
+        <div class="video-card">
+            <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/QFKmPlngXUE" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>1 KILL = 500 RUPEES 🤑</h3>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/SkbNnU71Myc" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Best Character Combinations for Esports</h3>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2024 My Gaming Hub. All videos stream directly from YouTube.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
