@@ -1,101 +1,121 @@
 let player;
-const cd = document.getElementById("cd");
-const eyes = document.getElementById("eyes");
-const talkBtn = document.getElementById("talkBtn");
-const songTitle = document.getElementById("songTitle");
+let cassette = document.getElementById("cassette");
+let currentIndex = 0;
 
-/* 🔥 ADD YOUR SONGS HERE */
-const songs = {
-    "believer": "h13lbNkUaEg",
-    "shape of you": "sf7VoyW_5ro",
-    "srivalli": "EtGh9oC2SZ0",
-    "arabic kuthu": "yh3C2JU-m_Y",
-    "tum hi ho": "1PxT9i4-uTc"
-};
+const playlist = [
+"h13lbNkUaEg",
+"sf7VoyW_5ro",
+"EtGh9oC2SZ0",
+"yh3C2JU-m_Y",
+"1PxT9i4-uTc",
+"Q-_cu_78eIA",
+"0pVMxbQh-Lc",
+"NeXbmEnpSz0",
+"palMj0iq-3g",
+"LbrJZgyqp5w",
+"vipdDXKHT_0",
+"ElIizBi-rEc",
+"DL8BsPDe4ck",
+"N5BmQz4AmFI",
+"CQSzGF9VAak",
+"pPGcYXZhCPY",
+"YjoKyFJf4CU",
+"aorAeMA06i0",
+"vmu53OX935A",
+"wc-pzBaSiPA",
+"PMzTLWTWLZU",
+"g5O5ufz8w34",
+"5Eqb_-j3FDA",
+"uXgzCjAv-9k",
+"Zu6z3qUPu1s",
+"sX4Bxks_VlI",
+"hoNb6HuNmU0",
+"LK7-_dgAVQE",
+"Pm7sWFzcPes",
+"yu8nxs1gw48",
+"wiur_AGatGU",
+"LAdp3ZHeP4Q",
+"rUeyfai1ddc",
+"FCDAnPFJUPA",
+"AN8-o7ckg6k"
+];
 
-/* YouTube API */
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player("player", {
-        height: "0",
-        width: "0",
-        videoId: "",
-        playerVars: { 'playsinline': 1 }
+function onYouTubeIframeAPIReady(){
+    player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: playlist[currentIndex],
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
     });
 }
 
-/* Controls */
-function playVideo() {
+function playVideo(){
     player.playVideo();
-    cd.classList.add("rotate");
-    eyes.classList.add("active");
+    cassette.style.animationPlayState = "running";
 }
 
-function pauseVideo() {
+function pauseVideo(){
     player.pauseVideo();
-    cd.classList.remove("rotate");
-    eyes.classList.remove("active");
+    cassette.style.animationPlayState = "paused";
 }
 
-function forward10() {
-    let current = player.getCurrentTime();
-    player.seekTo(current + 10, true);
+function nextSong(){
+    currentIndex++;
+    if(currentIndex >= playlist.length){
+        currentIndex = 0;
+    }
+    player.loadVideoById(playlist[currentIndex]);
+    cassette.style.animationPlayState = "running";
 }
 
-/* Voice Speak */
-function speak(text) {
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "en-US";
-    window.speechSynthesis.speak(speech);
+function prevSong(){
+    currentIndex--;
+    if(currentIndex < 0){
+        currentIndex = playlist.length - 1;
+    }
+    player.loadVideoById(playlist[currentIndex]);
+    cassette.style.animationPlayState = "running";
 }
 
-/* Voice Recognition */
-function startListening() {
+function onPlayerStateChange(event){
+    if(event.data === YT.PlayerState.ENDED){
+        nextSong();
+    }
+    if(event.data === YT.PlayerState.PAUSED){
+        cassette.style.animationPlayState = "paused";
+    }
+}
 
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = "en-US";
+function startListening(){
 
-    recognition.onresult = function(event) {
+    if (!('webkitSpeechRecognition' in window)){
+        alert("Voice not supported in this browser");
+        return;
+    }
 
-        let command = event.results[0][0].transcript.toLowerCase();
+    let recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.start();
 
-        console.log("User said:", command);
+    document.getElementById("status").innerText = "Listening...";
 
-        if (command.includes("hey rhk")) {
-            speak("Hello. Tell me which song you want to play.");
-            return;
+    recognition.onresult = function(event){
+        let speech = event.results[0][0].transcript.toLowerCase();
+        document.getElementById("status").innerText = "You said: " + speech;
+
+        if(speech.includes("next")){
+            nextSong();
         }
-
-        /* Clean command */
-        command = command
-            .replace("play", "")
-            .replace("song", "")
-            .replace("music", "")
-            .trim();
-
-        let found = false;
-
-        for (let key in songs) {
-            if (command.includes(key)) {
-
-                player.loadVideoById(songs[key]);
-                songTitle.innerText = "Playing: " + key;
-
-                speak("Playing " + key);
-
-                cd.classList.add("rotate");
-                eyes.classList.add("active");
-
-                found = true;
-                break;
-            }
+        else if(speech.includes("previous") || speech.includes("back")){
+            prevSong();
         }
-
-        if (!found) {
-            speak("I could not recognize that song. Please say again clearly.");
+        else if(speech.includes("pause")){
+            pauseVideo();
+        }
+        else if(speech.includes("play")){
+            playVideo();
         }
     };
-
-    recognition.start();
 }
-
-talkBtn.addEventListener("click", startListening);
