@@ -6,15 +6,12 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.assistant {
-    margin-top: 80px;
-}
-
+/* Eyes */
 .eyes {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-bottom: 20px;
+    gap: 60px;
+    margin-top: 100px;
 }
 
 .eye {
@@ -23,13 +20,49 @@ body {
     background: #00c3ff;
     border-radius: 50%;
     animation: blink 2s infinite;
+    transition: all 0.3s ease;
 }
 
+/* Blinking */
 @keyframes blink {
     0%, 90%, 100% { height: 60px; }
     95% { height: 5px; }
 }
 
+/* Active eyes (when music playing) */
+.eyes.active .eye {
+    width: 90px;
+    height: 90px;
+    animation: none;
+}
+
+/* Smile */
+.mouth {
+    font-size: 45px;
+    margin-top: 10px;
+}
+
+/* CD */
+.cd {
+    width: 220px;
+    height: 220px;
+    margin: 50px auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, #111 40%, #00c3ff 65%, #000 100%);
+    box-shadow: 0 0 40px #00c3ff;
+}
+
+/* Rotation */
+.rotate {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Buttons */
 button {
     padding: 10px 20px;
     margin: 5px;
@@ -46,5 +79,5 @@ button:hover {
 }
 
 .player-section {
-    margin-top: 40px;
+    margin-top: 20px;
 }
