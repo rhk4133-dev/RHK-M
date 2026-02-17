@@ -7,17 +7,20 @@
 <body>
 
 <div class="assistant">
-    <div class="eyes">
+    <div class="eyes" id="eyes">
         <div class="eye"></div>
         <div class="eye"></div>
     </div>
-    <h2>RHK AI</h2>
+
+    <div class="mouth">🙂</div>
+
     <button id="talkBtn">🎤 Talk</button>
 </div>
 
 <div class="player-section">
+    <div class="cd" id="cd"></div>
+
     <h3 id="songTitle">No Song Playing</h3>
-    <div id="player"></div>
 
     <div class="controls">
         <button onclick="playVideo()">▶</button>
@@ -25,6 +28,9 @@
         <button onclick="forward10()">⏩ +10s</button>
     </div>
 </div>
+
+<!-- Hidden YouTube Player -->
+<div id="player" style="display:none;"></div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
