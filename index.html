@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK AI Assistant</title>
+    <title>RHK Beats</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="assistant">
-    <div class="eyes" id="eyes">
-        <div class="eye"></div>
-        <div class="eye"></div>
-    </div>
+<h1>🔥 RHK Beats</h1>
 
-    <div class="mouth">🙂</div>
-
-    <button id="talkBtn">🎤 Talk</button>
-</div>
-
-<div class="player-section">
-    <div class="cd" id="cd"></div>
-
-    <h3 id="songTitle">No Song Playing</h3>
-
-    <div class="controls">
-        <button onclick="playVideo()">▶</button>
-        <button onclick="pauseVideo()">⏸</button>
-        <button onclick="forward10()">⏩ +10s</button>
+<div class="cassette-container">
+    <div class="cassette" id="cassette">
+        <span>RHK Beats</span>
     </div>
 </div>
 
-<!-- Hidden YouTube Player -->
-<div id="player" style="display:none;"></div>
+<div class="controls">
+    <button onclick="prevSong()">⏮</button>
+    <button onclick="playVideo()">▶</button>
+    <button onclick="pauseVideo()">⏸</button>
+    <button onclick="nextSong()">⏭</button>
+    <button onclick="startListening()">🎤</button>
+</div>
+
+<p id="status">Ready</p>
+
+<div id="player"></div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
