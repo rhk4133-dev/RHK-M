@@ -1,38 +1,44 @@
-// Play/Pause logic
-const videos = document.querySelectorAll('.video_player');
+// Function to handle play/pause and the center icon
+function setupVideoInteractions(videoElement) {
+    const container = videoElement.parentElement;
+    const icon = container.querySelector('.play_icon');
 
-for (const video of videos) {
-    video.addEventListener('click', function () {
-        if (video.paused) {
-            video.play();
+    container.addEventListener('click', () => {
+        if (videoElement.paused) {
+            videoElement.play();
+            icon.style.opacity = '0';
         } else {
-            video.pause();
+            videoElement.pause();
+            icon.style.opacity = '1';
         }
     });
 }
 
-// Simple upload simulation
-function uploadVideo() {
-    const fileInput = document.getElementById('videoInput');
-    const container = document.querySelector('.app_videos');
+// Initialize existing videos
+document.querySelectorAll('.video_player').forEach(setupVideoInteractions);
 
-    if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        const videoURL = URL.createObjectURL(file);
-
-        const newVideoDiv = document.createElement('div');
-        newVideoDiv.classList.add('video');
-        newVideoDiv.innerHTML = `
-            <video class="video_player" src="${videoURL}" loop></video>
+// Handle Uploads
+document.getElementById('videoInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const url = URL.createObjectURL(file);
+        const container = document.getElementById('videoContainer');
+        
+        const newReel = document.createElement('div');
+        newReel.className = 'video_container';
+        newReel.innerHTML = `
+            <video class="video_player" loop playsinline src="${url}"></video>
+            <i class='bx bx-play play_icon'></i>
             <div class="footer">
-                <h3>@You</h3>
-                <p>Just uploaded!</p>
+                <h3>@Me</h3>
+                <p>My New Reel!</p>
             </div>
         `;
         
-        container.prepend(newVideoDiv);
-        alert("Video preview added to the top!");
-    } else {
-        alert("Please select a video file first.");
+        container.prepend(newReel);
+        setupVideoInteractions(newReel.querySelector('.video_player'));
+        
+        // Auto-scroll to the top to see the new video
+        container.scrollTo({ top: 0, behavior: 'smooth' });
     }
-}
+});
