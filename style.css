@@ -2,22 +2,21 @@ body, html {
     margin: 0;
     padding: 0;
     background-color: #000;
-    font-family: sans-serif;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
     height: 100%;
     overflow: hidden;
 }
 
-.app_videos {
+.reels_container {
     height: 100vh;
     width: 100vw;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
+    scrollbar-width: none;
 }
 
-.app_videos::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
-
-.video_container {
+.reel {
     position: relative;
     height: 100vh;
     width: 100vw;
@@ -27,44 +26,97 @@ body, html {
 .video_player {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This makes the video clear and full-screen */
+    object-fit: cover;
 }
 
-/* Play/Pause Icon in Center */
-.play_icon {
+/* Sidebar (Right Side) */
+.sidebar {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 80px;
-    color: rgba(255, 255, 255, 0.7);
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
+    right: 10px;
+    bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
+.icon_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 28px;
+}
+
+.icon_group span {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Footer (Bottom Info) */
 .footer {
     position: absolute;
     bottom: 80px;
     left: 15px;
-    color: white;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    width: 75%;
 }
 
-.bottom_nav {
+.user_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.user_info img {
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.user_info button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.music {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 50%;
+}
+
+/* Navigation Bar */
+.instagram_nav {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
-    background: rgba(0,0,0,0.8);
+    background: black;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border-top: 0.5px solid #333;
+    font-size: 26px;
+    border-top: 0.1px solid #333;
 }
 
-.upload_btn {
+.nav_profile { border-radius: 50%; }
+
+/* Double Tap Heart Animation */
+.center_heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 100px;
     color: white;
-    font-size: 40px;
-    cursor: pointer;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.center_heart.animate {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
 }
