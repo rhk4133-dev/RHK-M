@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>RHK Beats</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelStream</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🔥 RHK Beats</h1>
+    <div class="app_videos">
+        <div class="video">
+            <video class="video_player" src="https://www.w3schools.com/html/mov_bbb.mp4" loop></video>
+            <div class="footer">
+                <h3>@user123</h3>
+                <p>Check out this cool sunset! #vibes</p>
+            </div>
+        </div>
 
-<div class="cassette-container">
-    <div class="cassette" id="cassette">
-        <span>RHK Beats</span>
+        <div class="video">
+            <video class="video_player" src="https://www.w3schools.com/html/movie.mp4" loop></video>
+            <div class="footer">
+                <h3>@creative_mind</h3>
+                <p>New project loading... 🚀</p>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="controls">
-    <button onclick="prevSong()">⏮</button>
-    <button onclick="playVideo()">▶</button>
-    <button onclick="pauseVideo()">⏸</button>
-    <button onclick="nextSong()">⏭</button>
-    <button onclick="startListening()">🎤</button>
-</div>
+    <div class="upload_container">
+        <input type="file" id="videoInput" accept="video/*">
+        <button onclick="uploadVideo()">Upload Reel</button>
+    </div>
 
-<p id="status">Ready</p>
-
-<div id="player"></div>
-
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
