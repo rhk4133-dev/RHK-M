@@ -1,58 +1,70 @@
-* {
+body, html {
     margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 0;
+    background-color: #000;
+    font-family: sans-serif;
+    height: 100%;
     overflow: hidden;
 }
 
 .app_videos {
-    position: relative;
-    height: 800px;
-    width: 80%;
-    max-width: 400px;
-    border: 5px solid white;
-    border-radius: 20px;
-    overflow-y: scroll;
+    height: 100vh;
+    width: 100vw;
     scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
 }
 
-.app_videos::-webkit-scrollbar {
-    display: none;
-}
+.app_videos::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
 
-.video {
+.video_container {
     position: relative;
-    height: 100%;
-    width: 100%;
-    background-color: black;
+    height: 100vh;
+    width: 100vw;
     scroll-snap-align: start;
 }
 
 .video_player {
-    object-fit: cover;
     width: 100%;
     height: 100%;
+    object-fit: cover; /* This makes the video clear and full-screen */
+}
+
+/* Play/Pause Icon in Center */
+.play_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
 }
 
 .footer {
     position: absolute;
-    bottom: 30px;
-    left: 20px;
+    bottom: 80px;
+    left: 15px;
     color: white;
-    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
-.upload_container {
+.bottom_nav {
     position: fixed;
-    bottom: 10px;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 0.5px solid #333;
+}
+
+.upload_btn {
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
 }
