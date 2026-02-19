@@ -2,33 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReelStream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ReelStream Mobile</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
-    <div class="app_videos">
-        <div class="video">
-            <video class="video_player" src="https://www.w3schools.com/html/mov_bbb.mp4" loop></video>
+    <div class="app_videos" id="videoContainer">
+        <div class="video_container">
+            <video class="video_player" loop playsinline src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-lights-12353-large.mp4"></video>
+            <i class='bx bx-play play_icon'></i>
             <div class="footer">
-                <h3>@user123</h3>
-                <p>Check out this cool sunset! #vibes</p>
-            </div>
-        </div>
-
-        <div class="video">
-            <video class="video_player" src="https://www.w3schools.com/html/movie.mp4" loop></video>
-            <div class="footer">
-                <h3>@creative_mind</h3>
-                <p>New project loading... 🚀</p>
+                <h3>@neon_vibes</h3>
+                <p>Night life in the city #aesthetic</p>
             </div>
         </div>
     </div>
 
-    <div class="upload_container">
-        <input type="file" id="videoInput" accept="video/*">
-        <button onclick="uploadVideo()">Upload Reel</button>
+    <div class="bottom_nav">
+        <label for="videoInput" class="upload_btn">
+            <i class='bx bx-plus-circle'></i>
+            <input type="file" id="videoInput" accept="video/*" hidden>
+        </label>
     </div>
 
     <script src="script.js"></script>
