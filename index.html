@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ReelStream Mobile</title>
+    <title>Instagram Reels Clone</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
-    <div class="app_videos" id="videoContainer">
-        <div class="video_container">
-            <video class="video_player" loop playsinline src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-lights-12353-large.mp4"></video>
-            <i class='bx bx-play play_icon'></i>
-            <div class="footer">
-                <h3>@neon_vibes</h3>
-                <p>Night life in the city #aesthetic</p>
+    <div class="reels_container" id="reelsContainer">
+        <div class="reel">
+            <video class="video_player" loop playsinline src="https://v.ftcdn.net/05/52/63/14/700_F_552631405_9vXn7WjXWjW6.mp4"></video>
+            
+            <div class="sidebar">
+                <div class="icon_group like_btn">
+                    <i class='bx bxs-heart heart_main'></i>
+                    <span>1.2M</span>
+                </div>
+                <div class="icon_group">
+                    <i class='bx bx-message-rounded-dots'></i>
+                    <span>450</span>
+                </div>
+                <div class="icon_group">
+                    <i class='bx bx-paper-plane'></i>
+                </div>
+                <div class="icon_group">
+                    <i class='bx bx-dots-vertical-rounded'></i>
+                </div>
             </div>
+
+            <div class="footer">
+                <div class="user_info">
+                    <img src="https://via.placeholder.com/40" alt="avatar">
+                    <strong>coding_wizard</strong>
+                    <button>Follow</button>
+                </div>
+                <p class="description">Creating the future one line at a time... #coding #webdev</p>
+                <div class="music">
+                    <i class='bx bx-music'></i>
+                    <marquee>Original Audio - coding_wizard</marquee>
+                </div>
+            </div>
+
+            <i class='bx bxs-heart center_heart'></i>
         </div>
     </div>
 
-    <div class="bottom_nav">
-        <label for="videoInput" class="upload_btn">
-            <i class='bx bx-plus-circle'></i>
-            <input type="file" id="videoInput" accept="video/*" hidden>
-        </label>
+    <div class="instagram_nav">
+        <i class='bx bx-home-alt-2'></i>
+        <i class='bx bx-search'></i>
+        <label for="videoInput"><i class='bx bx-plus-square'></i></label>
+        <input type="file" id="videoInput" hidden accept="video/*">
+        <i class='bx bx-movie-play active'></i>
+        <img src="https://via.placeholder.com/30" class="nav_profile">
     </div>
 
     <script src="script.js"></script>
