@@ -1,60 +1,55 @@
-// Handle Video Playback & Double Tap
-function initReel(reel) {
-    const video = reel.querySelector('.video_player');
-    const heart = reel.querySelector('.center_heart');
-    const likeIcon = reel.querySelector('.heart_main');
+// 1. Your Real Firebase Configuration from screenshot
+const firebaseConfig = {
+  apiKey: "AIzaSyD0mBdvC_eYXpZ7TJx8TphlD2Q34gVM6bI",
+  authDomain: "instaclone-f2b50.firebaseapp.com",
+  projectId: "instaclone-f2b50",
+  storageBucket: "instaclone-f2b50.firebasestorage.app",
+  messagingSenderId: "858120667519",
+  appId: "1:858120667519:web:4292fdbd703fadf5e61a4a"
+};
 
-    // Tap to Play/Pause
-    video.addEventListener('click', () => {
-        video.paused ? video.play() : video.pause();
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const storage = firebase.storage();
+
+// --- FUNCTION: UPLOAD REEL ---
+document.getElementById('videoInput').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    alert("Uploading to Cloud... please wait.");
+    const ref = storage.ref().child(`reels/${Date.now()}_${file.name}`);
+    
+    await ref.put(file);
+    const url = await ref.getDownloadURL();
+
+    // Save link to Database
+    await db.collection("reels").add({
+        videoUrl: url,
+        likes: 0,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
+    alert("Reel Posted Successfully!");
+});
 
-    // Double Tap to Like
-    let lastTap = 0;
-    video.addEventListener('touchstart', (e) => {
-        let currentTime = new Date().getTime();
-        let tapLength = currentTime - lastTap;
-        if (tapLength < 300 && tapLength > 0) {
-            // Show Big Heart
-            heart.style.transform = "translate(-50%, -50%) scale(1.2)";
-            heart.style.opacity = "1";
-            likeIcon.style.color = "red";
-            
-            setTimeout(() => {
-                heart.style.transform = "translate(-50%, -50%) scale(0)";
-                heart.style.opacity = "0";
-            }, 800);
-        }
-        lastTap = currentTime;
+// --- FUNCTION: LOAD REELS ---
+function loadReels() {
+    db.collection("reels").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+        const container = document.getElementById('reelsContainer');
+        container.innerHTML = '';
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            container.innerHTML += `
+                <div class="reel">
+                    <video loop playsinline src="${data.videoUrl}" onclick="this.paused?this.play():this.pause()"></video>
+                    <div class="sidebar">
+                        <i class='bx bxs-heart'></i><span>${data.likes}</span>
+                        <i class='bx bx-message-rounded-dots'></i>
+                    </div>
+                </div>`;
+        });
     });
 }
 
-// Initialize
-document.querySelectorAll('.reel').forEach(initReel);
-
-// Upload Logic
-document.getElementById('videoInput').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const url = URL.createObjectURL(file);
-        const container = document.getElementById('reelsContainer');
-        const newReel = document.createElement('div');
-        newReel.className = 'reel';
-        newReel.innerHTML = `
-            <video class="video_player" loop playsinline src="${url}"></video>
-            <div class="sidebar">
-                <div class="icon_group"><i class='bx bxs-heart heart_main'></i><span>0</span></div>
-                <div class="icon_group"><i class='bx bx-message-rounded-dots'></i><span>0</span></div>
-                <div class="icon_group"><i class='bx bx-paper-plane'></i></div>
-            </div>
-            <div class="footer">
-                <div class="user_info"><strong>my_new_post</strong></div>
-                <p>New upload! 🚀</p>
-            </div>
-            <i class='bx bxs-heart center_heart'></i>
-        `;
-        container.prepend(newReel);
-        initReel(newReel);
-        container.scrollTo({top: 0, behavior: 'smooth'});
-    }
-});
+loadReels();
