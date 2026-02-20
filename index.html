@@ -3,59 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Instagram Reels Clone</title>
+    <title>Instagram Clone</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
     <div class="reels_container" id="reelsContainer">
-        <div class="reel">
-            <video class="video_player" loop playsinline src="https://v.ftcdn.net/05/52/63/14/700_F_552631405_9vXn7WjXWjW6.mp4"></video>
-            
-            <div class="sidebar">
-                <div class="icon_group like_btn">
-                    <i class='bx bxs-heart heart_main'></i>
-                    <span>1.2M</span>
-                </div>
-                <div class="icon_group">
-                    <i class='bx bx-message-rounded-dots'></i>
-                    <span>450</span>
-                </div>
-                <div class="icon_group">
-                    <i class='bx bx-paper-plane'></i>
-                </div>
-                <div class="icon_group">
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </div>
-            </div>
-
-            <div class="footer">
-                <div class="user_info">
-                    <img src="https://via.placeholder.com/40" alt="avatar">
-                    <strong>coding_wizard</strong>
-                    <button>Follow</button>
-                </div>
-                <p class="description">Creating the future one line at a time... #coding #webdev</p>
-                <div class="music">
-                    <i class='bx bx-music'></i>
-                    <marquee>Original Audio - coding_wizard</marquee>
-                </div>
-            </div>
-
-            <i class='bx bxs-heart center_heart'></i>
         </div>
-    </div>
 
-    <div class="instagram_nav">
+    <div class="navbar">
         <i class='bx bx-home-alt-2'></i>
         <i class='bx bx-search'></i>
-        <label for="videoInput"><i class='bx bx-plus-square'></i></label>
-        <input type="file" id="videoInput" hidden accept="video/*">
+        <label for="videoInput">
+            <i class='bx bx-plus-square'></i>
+            <input type="file" id="videoInput" hidden accept="video/*">
+        </label>
         <i class='bx bx-movie-play active'></i>
-        <img src="https://via.placeholder.com/30" class="nav_profile">
+        <i class='bx bx-user-circle'></i>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
